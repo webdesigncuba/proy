@@ -22,10 +22,13 @@
       <tr *ngFor="let product of products">
         <td>{{ product.id }}</td>
         <td>{{ product.name }}</td>
+        
+        <!-- Mostrando o nome das Categorias que são chamadas como relacionamento com a Tabela de Categorias -->
         <ng-container *ngFor="let category of category">
         <td *ngIf="product.category_id== category.id">
         {{ category.name }}</td>
        </ng-container>
+
         <td>{{ product.valor}}</td>
         <td>{{ product.venc }}</td>
         <td>{{ product.quant }}</td>

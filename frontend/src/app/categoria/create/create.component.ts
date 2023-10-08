@@ -19,7 +19,8 @@ export class CreateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    
+    // Validando a entrada de dados do formulário
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
   

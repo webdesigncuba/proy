@@ -37,16 +37,21 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+     // Solicite que todas as categorias sejam exibidas em "Select" de formulario produtos
     this.categoriaService.getAll().subscribe((data: Category[]) => {
       this.categorias = data;
       console.log(this.categorias);
     });
+    // Procura de Product por Id
     this.id = this.route.snapshot.params['idProduct'];
     this.ProductService.find(this.id).subscribe((data: Product) => {
       this.product = data;
     });
 
 
+    // Validações
+    
     this.ProductForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
       category_id: new FormControl('', [Validators.required]),

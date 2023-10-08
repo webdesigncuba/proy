@@ -32,6 +32,8 @@ export class CreateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    // Solicite que todas as categorias sejam exibidas em "Select" de formulario produtos
     this.categoriaService.getAll().subscribe((data: Category[]) => {
       this.categorias = data;
       console.log(this.categorias);

@@ -8,11 +8,14 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+  
+   // Consulta de todas as categorias
     public function getAll(){
         $data = Category::get();
         return response()->json($data, 200);
       }
-    
+      
+   // Adicionar novas categorias 
       public function create(Request $request){
         $data['name'] = $request['name'];
         Category::create($data);
@@ -21,7 +24,8 @@ class CategoryController extends Controller
             'success' => true
         ], 200);
       }
-  
+      
+    // Excluir Categorias
       public function delete($id){
         $res = Category::find($id)->delete();
         return response()->json([
@@ -29,12 +33,14 @@ class CategoryController extends Controller
             'success' => true
         ], 200);
       }
-  
+    
+    // Procurar Categorias  
       public function get($id){
         $data = Category::find($id);
         return response()->json($data, 200);
       }
   
+    // Atualizar Categorias  
       public function update(Request $request,$id){
         $data['name'] = $request['name'];
         Category::find($id)->update($data);

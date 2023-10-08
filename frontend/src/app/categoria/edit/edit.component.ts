@@ -27,7 +27,8 @@ export class EditComponent implements OnInit {
     this.categoriaService.find(this.id).subscribe((data: Category) => {
       this.categoria = data;
     });
-
+    
+   // Validando a entrada de dados do formulário
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
     });

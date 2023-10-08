@@ -8,12 +8,13 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    // https://carbon.now.sh/
+      // Consulta de todos os Produtos
     public function getAll(){
         $data = Product::get();
         return response()->json($data, 200);
       }
   
+      // Adicionar novos Produtos
       public function create(Request $request){
         $data['name'] = $request['name'];
         $data['category_id'] = $request['category_id'];
@@ -28,6 +29,7 @@ class ProductController extends Controller
         ], 200);
       }
   
+      // Excluir produtos
       public function delete($id){
         $res = Product::find($id)->delete();
         return response()->json([
@@ -36,11 +38,13 @@ class ProductController extends Controller
         ], 200);
       }
   
+      // Procurar Produtos
       public function get($id){
         $data = Product::find($id);
         return response()->json($data, 200);
       }
   
+      // Atualizar Produtos
       public function update(Request $request,$id){
         $data['name'] = $request['name'];
         $data['category_id'] = $request['category_id'];

@@ -20,7 +20,8 @@ export class IndexComponent implements OnInit {
       console.log(this.categorias);
     })
   }
-
+  
+  // Excluir Categoria Front
   deleteCategoria(id: any) {
     this.categoriaService.delete(id).subscribe(res => {
       this.categorias = this.categorias.filter(item => item.id !== id);
