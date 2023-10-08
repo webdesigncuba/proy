@@ -9,10 +9,12 @@ import { CategoryModule } from './categoria/categoria.module';
 import { NgbModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductModule } from './product/product.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

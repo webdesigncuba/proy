@@ -2,47 +2,20 @@
 
     <div class="d-flex justify-content-between">
       <h4>Form Product</h4>
-      <a href="#" routerLink="/product/index" class="btn btn-primaryt">Back</a>
+      <a href="#" routerLink="/product/index" class="btn btn-primary">Back</a>
     </div>
   
     <hr/>
   
-      <form [formGroup]="ProductForm" (ngSubmit)="submit()">
-  
-          <div class="form-group row">
-              <div class="col-md-6 ">
-                <label for="title">Nome:</label>
-                <input
-                  formControlName="name"
-                  [(ngModel)]="product.name"
-                  id="name"
-                  type="text"
-                  class="form-control">
-                <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
-                    <div *ngIf="f.name.errors.required">*Name is required.</div>
-                    <div *ngIf="f.name.errors.pattern">*The name must only contain letters.</div>
-                </div>
-              </div>
-          </div>
-          <div class="form-group row">
-            <div class="col-md-6 ">
-              <label for="title">Categoria:</label>
-              <select class="form-control" name="category_id" id="category_id" formControlName="category_id">
-                <option *ngFor="let categoria of categorias"value={{categoria.id}}>{{ categoria.name }}</option>
-              </select>
-              <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
-                  <div *ngIf="f.name.errors.required">*Name is required.</div>
-                  <div *ngIf="f.name.errors.pattern">*The name must only contain letters.</div>
-              </div>
-            </div>
-        </div>
-        <div class="form-group row">
+    <form [formGroup]="ProductForm" (ngSubmit)="submit()">
+
+      <div class="form-group row">
           <div class="col-md-6 ">
-            <label for="title">Valor:</label>
+            <label for="title">Nome:</label>
             <input
-              formControlName="valor"
-              [(ngModel)]="product.valor"
-              id="valor"
+            [(ngModel)]="product.name"
+              formControlName="name"
+              id="name"
               type="text"
               class="form-control">
             <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
@@ -50,52 +23,73 @@
                 <div *ngIf="f.name.errors.pattern">*The name must only contain letters.</div>
             </div>
           </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-6 ">
+          <label for="title">Categoria:</label>
+          
+          <select class="form-control" name="category_id" id="category_id" formControlName="category_id">
+            <option *ngFor="let categoria of categorias"value={{categoria.id}}>{{ categoria.name }}</option>
+          </select>
         </div>
-        <div class="form-group row">
-          <div class="col-md-6 ">
-            <label for="title">Vencimento:</label>
-            <input 
-            formControlName="venc"
-            [(ngModel)]="product.venc"
-            id="venc"
-            type="text"
-            class="form-control" 
-            type="date" 
-            (change)="SendDataonChange($event)" 
-            [(ngModel)]="changed" />
-          </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-6 ">
+        <label for="title">Valor:</label>
+        <input
+        [(ngModel)]="product.valor"
+          formControlName="valor"
+          id="valor"
+          type="text"
+          class="form-control">
+        <div *ngIf="f.valor.touched && f.valor.invalid" class="alert alert-danger">
+            <div *ngIf="f.valor.errors.required">*Valor e obrigatorio.</div>
+            <div *ngIf="f.valor.errors.pattern">*The Valor must only contain numbers.</div>
         </div>
-        <div class="form-group row">
-          <div class="col-md-6 ">
-            <label for="title">Quantidade:</label>
-            <input
-              formControlName="quant"
-              [(ngModel)]="product.quant"
-              id="quant"
-              type="text"
-              class="form-control">
-            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
-                <div *ngIf="f.name.errors.required">*Name is required.</div>
-                <div *ngIf="f.name.errors.pattern">*The name must only contain letters.</div>
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-6 ">
+        <label for="title">Vencimento:</label>
+        <input 
+        [(ngModel)]="product.venc"
+        formControlName="venc"
+        id="venc"
+        type="text"
+        class="form-control" 
+        type="date" 
+        (change)="SendDataonChange($event)" 
+        [(ngModel)]="changed" />
+        <div *ngIf="f.venc.touched && f.venc.invalid" class="alert alert-danger">
+          <div *ngIf="f.venc.errors.required">*Data de Vencimento e obrigatorio.</div>
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-6 ">
+        <label for="title">Quantidade:</label>
+        <input
+        [(ngModel)]="product.quant"
+          formControlName="quant"
+          id="quant"
+          type="text"
+          class="form-control">
+        <div *ngIf="f.quant.touched && f.quant.invalid" class="alert alert-danger">
+            <div *ngIf="f.quant.errors.required">*Quantidade e Obrigatorio.</div>
+            <div *ngIf="f.quant.errors.pattern">*The Quantidade must only contain numbers.</div>
         </div>
-        <div class="form-group row">
-          <div class="col-md-6 ">
-            <label for="title">Perceveil:</label>
-            <input
-              formControlName="perc"
-              [(ngModel)]="product.perc"
-              id="perc"
-              type="text"
-              class="form-control">
-            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
-                <div *ngIf="f.name.errors.required">*Name is required.</div>
-                <div *ngIf="f.name.errors.pattern">*The name must only contain letters.</div>
-            </div>
-          </div>
-        </div>
-          <button class="btn btn-primary" type="submit">Submit</button>
-      </form>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-6 ">
+        <label for="title">Perceveil:</label>
+          <select class="form-control" name="perc" id="perc" formControlName="perc">
+            <option value = "1" selected >Sim</option>
+            <option value = "0">No</option>
+          </select>
+      </div>
+    </div>
+      <button class="btn btn-primary m-3" type="submit" >Guardar</button>
+  </form>
   </div>
   

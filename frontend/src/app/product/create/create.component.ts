@@ -23,7 +23,7 @@ export class CreateComponent implements OnInit {
   changed: Date;
   onClick() {
     console.log(this.changed);
-    }
+  }
 
   constructor(
     public ProductService: ProductService,
@@ -39,11 +39,12 @@ export class CreateComponent implements OnInit {
 
     this.ProductForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
-      category_id: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
-      valor: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
-      venc: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
-      quant: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
-      perc: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
+      category_id: new FormControl('', [Validators.required]),
+      valor: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
+      venc: new FormControl('', [Validators.required]),
+      quant: new FormControl('', [Validators.required, Validators.pattern('^^[0-9]*$')]),
+      perc: new FormControl('', [Validators.required]),
+
     });
 
   }

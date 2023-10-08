@@ -2,7 +2,7 @@
   
     <div class="d-flex justify-content-between">
       <h4>Edit Category</h4>
-      <a href="#" routerLink="/category/index" class="btn btn-primaryt">Back</a>
+      <a href="#" routerLink="/category/index" class="btn btn-primary">Back</a>
     </div>
 
     <hr>
@@ -25,6 +25,6 @@
               </div>
             </div>
         </div>
-        <button class="btn btn-primary" type="submit" [disabled]="form.valid">Update</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
     </form>
 </div>

@@ -49,9 +49,9 @@ export class EditComponent implements OnInit {
 
     this.ProductForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
-      category_id: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
+      category_id: new FormControl('', [Validators.required]),
       valor: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
-      venc: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
+      venc: new FormControl('', [Validators.required]),
       quant: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
       perc: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
     });
@@ -64,8 +64,8 @@ export class EditComponent implements OnInit {
 
   submit() {
     console.log(this.ProductForm.value);
-    this.ProductService.create(this.ProductForm.value).subscribe(res => {
-      console.log('product created successfully!');
+    this.ProductService.update(this.id, this.ProductForm.value).subscribe(res => {
+      console.log('Product updated successfully!');
       this.router.navigateByUrl('product/index');
     })
   }
