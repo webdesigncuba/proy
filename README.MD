@@ -23,7 +23,9 @@ DB_PASSWORD="SENHA DE USUARIO DE BANCO DE DADOS"
 *Executando Migrações
 --------------------------------------
 Usando o console no diretório Backend, execute o seguinte comando
+```
 php artisan migrate
+```
 
 Todas as migrações do sistema serão executadas e você estará pronto para trabalhar.
 
