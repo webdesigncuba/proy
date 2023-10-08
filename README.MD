@@ -1,4 +1,4 @@
- *Projeto para Empresa UITEC - Soluções Tecnológicas
+ * Projeto para Empresa UITEC - Soluções Tecnológicas
 --------------------------------------------------
 Projeto Feito em Angular: 16.2.8 como Frontend e Laravel Framework 10.26.2 como backend. BD em PostgresSQL.
 
@@ -6,7 +6,7 @@ O sistema iniciará com uma página principal onde serão exibidos dois botões 
 O projeto vem acompanhado de uma pasta onde há um backup do banco de dados, mas opcionalmente você pode criar um banco de dados e executar as migrações e começar a usar o sistema.
 
 
-*Restaurar banco de dados
+* Restaurar banco de dados
 ----------------------------------------
 O banco de dados é desenvolvido em Postgres 16, para restaurá-lo basta utilizar PGadmin4 e restaurá-lo utilizando seu utilitário.
 
