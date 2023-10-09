@@ -11,19 +11,21 @@ O projeto vem acompanhado de uma pasta onde há um backup do banco de dados, mas
 O banco de dados é desenvolvido em Postgres 16, para restaurá-lo basta utilizar PGadmin4 e restaurá-lo utilizando seu utilitário.
 
 Antes de migrar você precisará copiar o arquivo .env.example e renomeá-lo para .env e editar a seção Banco de dados.
-
+```
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
 DB_DATABASE="NOME DE BANCO DE DADOS"
 DB_USERNAME="USUARIO DE BANCO DE DADOS"
 DB_PASSWORD="SENHA DE USUARIO DE BANCO DE DADOS"
-
+```
 
 *Executando Migrações
 --------------------------------------
 Usando o console no diretório Backend, execute o seguinte comando
+```
 php artisan migrate
+```
 
 Todas as migrações do sistema serão executadas e você estará pronto para trabalhar.
 
