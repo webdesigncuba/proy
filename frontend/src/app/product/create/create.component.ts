@@ -4,6 +4,7 @@ import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
 import { Category } from './.././../categoria/categoria';
 import { CategoryService } from './.././../categoria/categoria.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create',
@@ -42,13 +43,18 @@ export class CreateComponent implements OnInit {
     this.ProductForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
       category_id: new FormControl('', [Validators.required]),
-      valor: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
+      valor: new FormControl('', [Validators.required, Validators.pattern("^[0-9.,]*$")]),
       venc: new FormControl('', [Validators.required]),
-      quant: new FormControl('', [Validators.required, Validators.pattern('^^[0-9]*$')]),
+      quant: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
       perc: new FormControl('', [Validators.required]),
 
     });
 
+  }
+
+  // Alerta de Guardado
+  successNotification() {
+    Swal.fire('Product created successfully!', 'success');
   }
 
   get f() {
@@ -59,6 +65,7 @@ export class CreateComponent implements OnInit {
     console.log(this.ProductForm.value);
     this.ProductService.create(this.ProductForm.value).subscribe(res => {
       console.log('product created successfully!');
+      this.successNotification();
       this.router.navigateByUrl('product/index');
     })
   }

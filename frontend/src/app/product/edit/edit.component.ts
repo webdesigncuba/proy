@@ -5,6 +5,7 @@ import { Category } from 'src/app/categoria/categoria';
 import { CategoryService } from 'src/app/categoria/categoria.service';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -38,7 +39,7 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
 
-     // Solicite que todas as categorias sejam exibidas em "Select" de formulario produtos
+    // Solicite que todas as categorias sejam exibidas em "Select" de formulario produtos
     this.categoriaService.getAll().subscribe((data: Category[]) => {
       this.categorias = data;
       console.log(this.categorias);
@@ -51,16 +52,21 @@ export class EditComponent implements OnInit {
 
 
     // Validações
-    
+
     this.ProductForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
       category_id: new FormControl('', [Validators.required]),
-      valor: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
+      valor: new FormControl('', [Validators.required, Validators.pattern("^[0-9.,]*$")]),
       venc: new FormControl('', [Validators.required]),
-      quant: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
-      perc: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
+      quant: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+      perc: new FormControl('', [Validators.required]),
     });
 
+  }
+
+  // Alerta de Guardado
+  successNotification() {
+    Swal.fire('Product updated successfully!', 'success');
   }
 
   get f() {
@@ -71,6 +77,7 @@ export class EditComponent implements OnInit {
     console.log(this.ProductForm.value);
     this.ProductService.update(this.id, this.ProductForm.value).subscribe(res => {
       console.log('Product updated successfully!');
+      this.successNotification()
       this.router.navigateByUrl('product/index');
     })
   }

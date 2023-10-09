@@ -29,7 +29,7 @@
         {{ category.name }}</td>
        </ng-container>
 
-        <td>{{ product.valor}}</td>
+        <td>{{ product.valor | currency: 'BRL' }}</td>
         <td>{{ product.venc }}</td>
         <td>{{ product.quant }}</td>
         <td>{{ product.perc }}</td>

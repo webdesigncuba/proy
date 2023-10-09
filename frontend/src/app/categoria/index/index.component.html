@@ -18,7 +18,7 @@
         <td>{{ categoria.id }}</td>
         <td>{{ categoria.name }}</td>
         <td>
-          <a href="#" [routerLink]="['/category/', 'edit', categoria.id  ]" class="btn btn-primary m-3">Edit</a>
+          <a href="#" [routerLink]="['/category/', 'edit', categoria.id  ]" class="btn btn-primary">Edit</a>
           <button type="button" (click)="deleteCategoria(categoria.id)" class="btn btn-danger">Delete</button>
         </td>
       </tr>

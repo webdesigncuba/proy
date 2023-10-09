@@ -31,6 +31,9 @@
           <select class="form-control" name="category_id" id="category_id" formControlName="category_id">
             <option *ngFor="let categoria of categorias"value={{categoria.id}}>{{ categoria.name }}</option>
           </select>
+          <div *ngIf="f.venc.touched && f.venc.invalid" class="alert alert-danger">
+            <div *ngIf="f.venc.errors.required">*Categoria e Obrigatorio.</div>
+        </div>
         </div>
     </div>
     <div class="form-group row">
@@ -87,9 +90,12 @@
             <option value = "1" selected >Sim</option>
             <option value = "0">No</option>
           </select>
+          <div *ngIf="f.perc.touched && f.perc.invalid" class="alert alert-danger">
+            <div *ngIf="f.perc.errors.required">*Perceveil e Obrigatorio.</div>
+        </div>
       </div>
     </div>
-      <button class="btn btn-primary m-3" type="submit" >Guardar</button>
+      <button class="btn btn-primary m-3" type="submit"  [disabled]="!ProductForm.valid">Guardar</button>
   </form>
   </div>
   
